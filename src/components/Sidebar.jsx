@@ -1,25 +1,26 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './Sidebar.style.css'
 
 const Sidebar = () => {
   return (
-    <div className='sidebar'>
-        <ul>    
+    <div className='sidebar h-full w-1/5 bg-red-500'>
+        <ul className='sidebar-list'>    
             <li>
                 <Link to="/">
-                    Home
+                    Dashboard
                 </Link>
             </li>
             <li>
-                <Link to="/about">
-                    About
+                <Link to="/pages">
+                    Pages
                 </Link>
             </li>
             <li>
-                <Link to="/services">Services</Link>
+                <Link to="/media">Media</Link>
             </li>
             {/* <li>
-                <Link></Link>
+                <Link to="/"></Link>
             </li>
             <li>
                 <Link></Link>

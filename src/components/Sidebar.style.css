@@ -1,0 +1,35 @@
+.sidebar{
+    background-color: red;
+    width: 10%;
+    height: 100%;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+ul{
+    background-color: gray;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+}
+
+.sidebar-list{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    list-style: none;
+}
+
+a{
+    color: white;
+    text-decoration: none;
+    text-align: start;
+    padding: 10px;
+    border-radius: 5px;
+}
+a:hover{
+    background-color: rgb(187, 177, 177);
+    font-size: 105%;
+}
