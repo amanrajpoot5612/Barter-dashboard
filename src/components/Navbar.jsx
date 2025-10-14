@@ -1,8 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { backend_url } from '../config/conf';
+import EditButton from './EditButton';
 
 const Navbar = () => {
   const [nav, setNav] = useState([]);
+  const [inputData, setInputData] = useState({
+    icon: "",
+    label: "",
+    key: "",
+    _id: ""
+  })
   useEffect(() => {
     const fetchNav = async () => {
       const res = await fetch(`${backend_url}/navbar`);
@@ -14,10 +21,7 @@ const Navbar = () => {
   }, [])
 
 
-  const handleChange  =  (index, field, value) => {
-    const updatedNav = [...nav];
-    updatedNav[index][field] = value;
-    setNav(updatedNav);
+  const handleChange  =  () => {;
   };
 
   const handleSubmit = async (index) => {
@@ -26,55 +30,82 @@ const Navbar = () => {
 
 
   return (
-    <div className="navbar-component" style={{ padding: "20px" }}>
-      <h1 style={{ textAlign: "center", marginBottom: "30px" }}>Navbar</h1>
-
-      <div style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "20px",
-        justifyContent: "center"
-      }}>
-        {nav?.map((item) => (
-          <div
-            className="nav-card"
-            key={item._id}
+   <div
+   id='navbar'
+  className="cards-container"
+  style={{
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: '20px',
+    padding: '20px',
+    backgroundColor: '#f9f9f9',
+  }}
+>
+  {nav.map((item) => (
+    <div
+      key={item?._id}
+      className="card"
+      style={{
+        background: '#fff',
+        border: '1px solid #ddd',
+        borderRadius: '8px',
+        padding: '16px',
+        width: '100%',
+        maxWidth: '300px',
+        boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
+      }}
+    >
+      {/* Icon if available */}
+      {item.icon && (
+        <div style={{ marginBottom: '10px' }}>
+          <img
+            src={item.icon}
+            alt={item.label}
             style={{
-              width: "250px",
-              border: "1px solid #ddd",
-              borderRadius: "8px",
-              padding: "15px",
-              boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
-              backgroundColor: "#fff",
-              textAlign: "center",
-              transition: "transform 0.2s",
+              width: '100%',
+              height: 'auto',
+              objectFit: 'contain',
+              borderRadius: '4px',
             }}
-          >
+          />
+        </div>
+      )}
 
-            {!item?.icon ? null :
-              <img
-                src={item?.icon}
-                alt={`${item?.label} icon`}
-                style={{
-                  width: "60px",
-                  height: "60px",
-                  objectFit: "contain",
-                  marginBottom: "10px",
-                }}
-              />
-            }
-
-            <h2 style={{ fontSize: "18px", margin: "10px 0 5px" }}>
-              {item?.label}
-            </h2>
-            <h3 style={{ fontSize: "14px", color: "#666", margin: "0 0 10px" }}>
-              {item?.key}
-            </h3>
-            <p style={{ fontSize: "12px", color: "#aaa" }}>{item?._id}</p>
-          </div>
-        ))}
+      {/* Label */}
+      <div style={{ marginBottom: '6px' }}>
+        <strong>Label:</strong>
+        <input type="text" value={item.label} onChange={handleChange}/>
       </div>
+
+      {/* Key */}
+      <div style={{ marginBottom: '6px' }}>
+        <strong>Key:</strong>
+        <input type="text" value={item.key} onChange={handleChange}/>
+      </div>
+
+      {/* ID */}
+      <div style={{ marginBottom: '6px' }}>
+        <strong>ID:</strong> {item._id}
+        {/* <input type="text" value={item._id} onChange={handleChange}/> */}
+      </div>
+
+      {/* Created At */}
+      <div style={{ marginBottom: '6px' }}>
+        <strong>Created:</strong>{' '}
+        {new Date(item.createdAt).toLocaleString()}
+      </div>
+
+      {/* Updated At */}
+      <div>
+        <strong>Updated:</strong>{' '}
+        {new Date(item.updatedAt).toLocaleString()}
+      </div>
+      <EditButton id={item?._id} text={"Edit"}></EditButton>
     </div>
+  ))}
+</div>
+
+
 
   )
 };
