@@ -1,0 +1,14 @@
+.edit-button{
+    padding: 7px;
+    margin: 5px;
+    padding-left: 22px;
+    padding-right: 22px;
+    border: 2px solid black;
+    background-color: rgb(97, 97, 161);
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover{
+    background-color: rgb(69, 69, 172);
+}
