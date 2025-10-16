@@ -55,7 +55,9 @@ const ImagePage = () => {
   {data?.page?.map((singlePage) => (
     <div className="image-page-card" key={singlePage._id}>
       <div className="page-header">
-        <h2><strong>Title: </strong>{singlePage.title}</h2>
+        <h2><strong>Title: </strong>
+        <input type="text" value={singlePage.title} />
+        </h2>
         <p><strong>📄 Page ID:</strong> {singlePage._id}</p>
         <p><strong>Key:</strong> {singlePage.key}</p>
         <EditButton id={singlePage._id}  text={"Edit"}></EditButton>
@@ -63,7 +65,9 @@ const ImagePage = () => {
 
       {singlePage?.content.map((subTitle) => (
         <div className="collection-section" key={subTitle._id}>
-          <h3><strong>Collection title: </strong>{subTitle?.title}</h3>
+          <h3><strong>Collection title: </strong>
+          <input type="text" value={subTitle?.title} />
+          </h3>
           <EditButton id={subTitle._id}  text={"Edit"}></EditButton>
 
           <div className="image-grid">

@@ -38,7 +38,9 @@ const Footer = () => {
     }}
   >
     <h2>🔖 Footer Metadata</h2>
-    <p><strong>Company Name:</strong> {footerData.companyName}</p>
+    <p><strong>Company Name:</strong>
+    <input type="text" value= {footerData.companyName} />
+    </p>
     <p><strong>ID:</strong> {footerData._id}</p>
     <p><strong>Created:</strong> {new Date(footerData.createdAt).toLocaleString()}</p>
     <p><strong>Updated:</strong> {new Date(footerData.updatedAt).toLocaleString()}</p>
@@ -81,15 +83,22 @@ const Footer = () => {
             boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
           }}
         >
-          <h3><strong>{`Section heading ${idx+1}: `}</strong>{section.heading} 
-          <br /><strong>{`Section type: `}</strong>{section.type}</h3>
+          <h3><strong>{`Section heading ${idx+1}: `}</strong>
+          <input type="text" value={section.heading}  />
+          <br /><strong>{`Section type: `}</strong>
+          <input type="text" value={section.type}/>
+          </h3>
 
 
           {section.items && section.items.length > 0 ? (
             <ul style={{ paddingLeft: '20px' }}>
               {section.items.map((item) => (
                 <li key={item._id}>
-                  <strong>Name: </strong>{`${item.name}`} {item.link && <span style={{ color: '#007bff' }}> <br /><strong>Link: </strong>({`${item.link}`})</span>}
+                  <strong>Name: </strong>
+                  <input type="text" value={item.name} /> 
+                  {item.link && <span style={{ color: '#007bff' }}> <br /><strong>Link: </strong>
+                  <input type="text"  value={item.link}/>
+                  </span>}
                 </li>
               ))}
             </ul>
@@ -114,8 +123,12 @@ const Footer = () => {
     }}
   >
     <h2>📌 Footer Bottom</h2>
-    <p><strong>Left:</strong> {footerData?.bottom?.left}</p>
-    <p><strong>Right:</strong> {footerData?.bottom?.right}</p>
+    <p><strong>Left:</strong>
+    <textarea style={{fieldSizing: "content"}} value={footerData?.bottom?.left} >{footerData?.bottom?.left}</textarea>
+    </p>
+    <p><strong>Right:</strong>
+    <textarea style={{fieldSizing: "content"}} value={footerData?.bottom?.right} >{footerData?.bottom?.right}</textarea>
+    </p>
     <EditButton id={footerData?._id}  text={"Edit"}></EditButton>
   </div>
 </div>
