@@ -49,11 +49,13 @@ const Testimonial = () => {
           </div>
 
           <h3 style={{ marginBottom: '10px', color: '#007bff' }}>
-            📝 <strong>Heading: </strong>{item.heading}
+            📝 <strong>Heading: </strong>
+              <input type="text" value={item.heading} />
           </h3>
 
           <p style={{ fontSize: '14px', color: '#333', lineHeight: '1.5' }}>
-            <strong>Paragraph: </strong>{item.para}
+            <strong>Paragraph: </strong>
+            <textarea value={item.para} style={{fieldSizing: "content"}} />
           </p>
 
           <p style={{ fontSize: '14px', color: '#333', lineHeight: '1.5' }}>
