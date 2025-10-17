@@ -267,7 +267,7 @@ const Page = () => {
   };
 
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: '20px' }} id='page'>
       <h1>Pages</h1>
       <button onClick={handleSubmit} style={{
         padding: '10px 20px',
